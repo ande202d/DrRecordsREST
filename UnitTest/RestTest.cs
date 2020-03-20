@@ -51,10 +51,6 @@ namespace UnitTest
         [TestMethod]
         public void TestGetId()
         {
-            //Record rec1 = new Record("AndersUndervisning1", "Anders1", 69, 2020);
-            //Record rec2 = new Record("AndersUndervisning2", "Anders2", 69, 2020);
-            //Record rec3 = new Record("AndersUndervisning3", "Anders3", 69, 2020);
-
             Record rec4 = new Record("AndersUndervisning4", "Anders4", 69, 2020);
             Record rec5 = new Record("AndersUndervisning4", "Anders4", 69, 2020);
             Record rec6 = new Record("AndersUndervisning4", "Anders4", 69, 2020);

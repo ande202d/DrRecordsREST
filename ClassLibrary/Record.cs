@@ -4,14 +4,20 @@ namespace ClassLibrary
 {
     public class Record
     {
-		private int _id;
+		private int _id = 0;
 		private string _title;
 		private string _artist;
 		private int _durationInSeconds;
 		private int _yearOfPublication;
 
+        public Record()
+        {
+            
+        }
+
         public Record(string title, string artist, int durationInSeconds, int yearOfPublication)
         {
+            Id = 0;
             Title = title;
             Artist = artist;
             DurationInSeconds = durationInSeconds;

@@ -12,7 +12,15 @@ namespace DrRecordsREST.Controllers
     [Route("api/[controller]")]
     public class RecordsController : Controller
     {
-        private static List<Record> list = new List<Record>();
+        private static List<Record> list = new List<Record>()
+        {
+            new Record("AndersUndervisning1", "Anders1", 69, 2000),
+            new Record("AndersUndervisning2", "Anders2", 69, 1990),
+            new Record("AndersUndervisning3", "Anders3", 69, 1980),
+            new Record("AndersUndervisning4", "Anders4", 69, 1970),
+            new Record("AndersUndervisning5", "Anders5", 69, 1960),
+            new Record("AndersUndervisning6", "Anders6", 69, 1960)
+        };
 
         public void Clear()
         {
@@ -32,14 +40,18 @@ namespace DrRecordsREST.Controllers
         [HttpGet("{id}")]
         public Record Get(int id)
         {
-            //foreach (Record r in list)
-            //{
-            //    if (r.Id == id) return r;
-            //}
-
-            //return null;
             return list.Find(i => i.Id == id);
         }
+
+        // GET api/<controller>/year/1950
+        //give me everything puliced after 1950
+        [HttpGet]
+        [Route("year/{year}")]
+        public List<Record> GetByYear(int year)
+        {
+            return list.FindAll(i => i.YearOfPublication >= year);
+        }
+
 
         // POST api/<controller>
         [HttpPost]
@@ -47,7 +59,7 @@ namespace DrRecordsREST.Controllers
         {
             Record r = value;
             r.Id = _nextId;
-            list.Add(r);
+            list.Add(value);
             _nextId++;
             return r;
         }
