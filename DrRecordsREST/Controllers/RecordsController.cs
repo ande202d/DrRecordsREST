@@ -44,12 +44,34 @@ namespace DrRecordsREST.Controllers
         }
 
         // GET api/<controller>/year/1950
-        //give me everything puliced after 1950
+        //give me everything publiced after 1950
+        //[HttpGet]
+        //[Route("year/{year}")]
+        //public List<Record> GetByYear(int year)
+        //{
+        //    return list.FindAll(i => i.YearOfPublication >= year);
+        //}
+
+        //YEAR
         [HttpGet]
-        [Route("year/{year}")]
-        public List<Record> GetByYear(int year)
+        [Route("search/year/{s}")]
+        public List<Record> GetByYear(int s)
         {
-            return list.FindAll(i => i.YearOfPublication >= year);
+            return list.FindAll(i => i.YearOfPublication >= s);
+        }
+        //TITLE
+        [HttpGet]
+        [Route("search/title/{s}")]
+        public List<Record> GetByTitle(string s)
+        {
+            return list.FindAll(i => i.Title.ToLower().Contains(s.ToLower()));
+        }
+        //ARTIST
+        [HttpGet]
+        [Route("search/artist/{s}")]
+        public List<Record> GetByArtist(string s)
+        {
+            return list.FindAll(i => i.Artist.ToLower().Contains(s.ToLower()));
         }
 
 
