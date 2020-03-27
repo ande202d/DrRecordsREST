@@ -12,22 +12,27 @@ namespace DrRecordsREST.Controllers
     [Route("api/[controller]")]
     public class RecordsController : Controller
     {
-        private static List<Record> list = new List<Record>()
-        //to troubleshoot use {localhost}/swagger/v1/swagger.json
-        {
-            new Record("AndersUndervisning1", "Anders1", 69, 2000),
-            new Record("AndersUndervisning2", "Anders2", 69, 1990),
-            new Record("AndersUndervisning3", "Anders3", 69, 1980),
-            new Record("AndersUndervisning4", "Anders4", 69, 1970),
-            new Record("AndersUndervisning5", "Anders5", 69, 1960),
-            new Record("AndersUndervisning6", "Anders6", 69, 1960)
-        };
 
-        //public void Clear()
-        //{
-        //    list = new List<Record>();
-        //    _nextId = 1;
-        //}
+        private static List<Record> getRecords()
+        {
+            Record r1 = new Record("Last Christmas", "Wham!", 265, 1984); r1.Id = _nextId; _nextId++;
+            Record r2 = new Record("Last Resort", "Papa Roach", 200, 2000); r2.Id = _nextId; _nextId++;
+            Record r3 = new Record("Baby", "Justin Bieber", 216, 2009); r3.Id = _nextId; _nextId++;
+            Record r4 = new Record("What is love", "Haddaway", 269, 1993); r4.Id = _nextId; _nextId++;
+            List<Record> listToReturn = new List<Record>(){r1,r2,r3,r4};
+
+            return listToReturn;
+        }
+
+        private static List<Record> list = getRecords();
+
+        //to troubleshoot use {localhost}/swagger/v1/swagger.json;
+
+        public static void Clear()
+        {
+            list = new List<Record>();
+            _nextId = 1;
+        }
 
         private static int _nextId = 1;
         // GET: api/<controller>

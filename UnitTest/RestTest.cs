@@ -19,7 +19,7 @@ namespace UnitTest
         {
             r1 = new Record("AndersUndervisning", "Anders", 69, 2020);
             controller = new RecordsController();
-            controller.Clear();
+            RecordsController.Clear();
         }
 
         [TestMethod]
@@ -62,6 +62,46 @@ namespace UnitTest
             Record rr4 = controller.Post(rec7);
 
             Assert.AreEqual(1, controller.Get(1).Id);
+        }
+
+        [TestMethod]
+        public void TestGetTitle()
+        {
+            Record r1 = new Record("Last Christmas", "Wham!", 265, 1984);
+            Record r2 = new Record("Last Resort", "Papa Roach", 200, 2000);
+
+            controller.Post(r1);
+            controller.Post(r2);
+
+            Assert.AreEqual(1, controller.GetByTitle("last christ").Count);
+            Assert.AreEqual(2, controller.GetByTitle("last").Count);
+        }
+
+        [TestMethod]
+        public void TestGetYear()
+        {
+            Record r1 = new Record("Last Christmas", "Wham!", 265, 1984);
+            Record r2 = new Record("Last Resort", "Papa Roach", 200, 2000);
+
+            controller.Post(r1);
+            controller.Post(r2);
+
+            Assert.AreEqual(1, controller.GetByYear(1990).Count);
+            Assert.AreEqual(2, controller.GetByYear(1980).Count);
+        }
+
+        [TestMethod]
+        public void TestGetArtist()
+        {
+            Record r1 = new Record("Last Christmas", "Wham!", 265, 1984);
+            Record r2 = new Record("Last Resort", "Papa Roach", 200, 2000);
+
+            controller.Post(r1);
+            controller.Post(r2);
+
+            Assert.AreEqual(1, controller.GetByArtist("!").Count);
+            Assert.AreEqual(1, controller.GetByArtist("roach").Count);
+            Assert.AreEqual(2, controller.GetByArtist("a").Count);
         }
     }
 }
