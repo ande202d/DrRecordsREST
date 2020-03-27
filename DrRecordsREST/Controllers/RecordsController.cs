@@ -13,6 +13,7 @@ namespace DrRecordsREST.Controllers
     public class RecordsController : Controller
     {
         private static List<Record> list = new List<Record>()
+        //to troubleshoot use {localhost}/swagger/v1/swagger.json
         {
             new Record("AndersUndervisning1", "Anders1", 69, 2000),
             new Record("AndersUndervisning2", "Anders2", 69, 1990),
@@ -22,11 +23,11 @@ namespace DrRecordsREST.Controllers
             new Record("AndersUndervisning6", "Anders6", 69, 1960)
         };
 
-        public void Clear()
-        {
-            list = new List<Record>();
-            _nextId = 1;
-        }
+        //public void Clear()
+        //{
+        //    list = new List<Record>();
+        //    _nextId = 1;
+        //}
 
         private static int _nextId = 1;
         // GET: api/<controller>
