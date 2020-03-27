@@ -12,6 +12,7 @@ namespace DrRecordsREST.Controllers
     [Route("api/[controller]")]
     public class RecordsController : Controller
     {
+        private static int _nextId = 1;
 
         private static List<Record> getRecords()
         {
@@ -34,7 +35,6 @@ namespace DrRecordsREST.Controllers
             _nextId = 1;
         }
 
-        private static int _nextId = 1;
         // GET: api/<controller>
         [HttpGet]
         public List<Record> Get()
